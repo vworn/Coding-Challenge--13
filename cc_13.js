@@ -43,82 +43,78 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Clear input fields
                 nameInput.value = "";
                 positionInput.value = "";
+            // Create edit button
+            const editBtn = document.createElement("button");
+            editBtn.textContent = "Edit";
+            editBtn.classList.add("edit-btn");
+
+            // Task 4: Implementing Removal of Employee Cards with Event Bubbling
+            removeBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevents event bubbling
+                employeeContainer.removeChild(card);
+            });
+
+            // Task 5: Inline Editing of Employee Details
+            editBtn.addEventListener("click", () => {
+                enableEditing(card, empName, empPosition);
+            });
+
+            // Append elements to card
+            card.appendChild(empName);
+            card.appendChild(empPosition);
+            card.appendChild(editBtn);
+            card.appendChild(removeBtn);
+            employeeContainer.appendChild(card);
+
+            // Clear input fields
+            nameInput.value = "";
+            positionInput.value = "";
+        }
+    
+        // Task 5: Inline Editing Function
+        function enableEditing(card, nameElement, positionElement) {
+            const nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.value = nameElement.textContent;
+    
+            const positionInput = document.createElement("input");
+            positionInput.type = "text";
+            positionInput.value = positionElement.textContent;
+    
+            const saveBtn = document.createElement("button");
+            saveBtn.textContent = "Save";
+            saveBtn.classList.add("save-btn");
+    
+            saveBtn.addEventListener("click", () => {
+                nameElement.textContent = nameInput.value;
+                positionElement.textContent = positionInput.value;
+    
+                // Swap back static elements
+                card.replaceChild(nameElement, nameInput);
+                card.replaceChild(positionElement, positionInput);
+                card.replaceChild(editBtn, saveBtn);
+            });
+    
+            // Swap static elements with input fields
+            card.replaceChild(nameInput, nameElement);
+            card.replaceChild(positionInput, positionElement);
+            card.replaceChild(saveBtn, card.querySelector(".edit-btn"));
+        }
+    
+        // Task 4: Event Bubbling Demonstration
+        employeeContainer.addEventListener("click", (e) => {
+            if (e.target.classList.contains("employee-card")) {
+                console.log("Employee card clicked!");
             }
         });
-
-
-        // Task 4: Implementing Removal of Employee Cards with Event Bubbling
-        removeBtn.addEventListener("click", (e) => {
-            e.stopPropagation(); // Prevents event bubbling
-            employeeContainer.removeChild(card);
-        });
-
-        // Create edit button
-        const editBtn = document.createElement("button");
-        editBtn.textContent = "Edit";
-        editBtn.classList.add("edit-btn");
-
-
-        // Task 5: Inline Editing of Employee Details
-        editBtn.addEventListener("click", () => {
-            enableEditing(card, empName, empPosition);
-        });
-
-        // Append elements to card
-        card.appendChild(empName);
-        card.appendChild(empPosition);
-        card.appendChild(editBtn);
-        card.appendChild(removeBtn);
-        employeeContainer.appendChild(card);
-
-        // Clear input fields
-        nameInput.value = "";
-        positionInput.value = "";
-    }
-
-    // Task 5: Inline Editing Function
-    function enableEditing(card, nameElement, positionElement) {
-        const nameInput = document.createElement("input");
-        nameInput.type = "text";
-        nameInput.value = nameElement.textContent;
-
-        const positionInput = document.createElement("input");
-        positionInput.type = "text";
-        positionInput.value = positionElement.textContent;
-
-        const saveBtn = document.createElement("button");
-        saveBtn.textContent = "Save";
-        saveBtn.classList.add("save-btn");
-
-        saveBtn.addEventListener("click", () => {
-            nameElement.textContent = nameInput.value;
-            positionElement.textContent = positionInput.value;
-
-            // Swap back static elements
-            card.replaceChild(nameElement, nameInput);
-            card.replaceChild(positionElement, positionInput);
-            card.replaceChild(editBtn, saveBtn);
-        });
-
-        // Swap static elements with input fields
-        card.replaceChild(nameInput, nameElement);
-        card.replaceChild(positionInput, positionElement);
-        card.replaceChild(saveBtn, card.querySelector(".edit-btn"));
-    }
-
-    // Task 4: Event Bubbling Demonstration
-    employeeContainer.addEventListener("click", (e) => {
-        if (e.target.classList.contains("employee-card")) {
-            console.log("Employee card clicked!");
+    
+        // Task 3: Converting NodeLists to Arrays for Bulk Updates
+        function bulkUpdate() {
+            const cards = Array.from(document.querySelectorAll(".employee-card"));
+            cards.forEach(card => {
+                card.style.backgroundColor = "lightblue";
+            });
         }
+    
+        // Example usage: Call bulkUpdate() from the console to update all employee cards
     });
-
-    // Task 3: Converting NodeLists to Arrays for Bulk Updates
-    function bulkUpdate() {
-        const cards = Array.from(document.querySelectorAll(".employee-card"));
-        cards.forEach(card => {
-            card.style.backgroundColor = "lightblue";
-        });
-    }
-
-    // Example usage: Call bulkUpdate() from the console to update all employee cards
