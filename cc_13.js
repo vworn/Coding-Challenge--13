@@ -45,3 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 positionInput.value = "";
             }
         });
+
+
+        // Task 4: Implementing Removal of Employee Cards with Event Bubbling
+        removeBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevents event bubbling
+            employeeContainer.removeChild(card);
+        });
+
+        // Create edit button
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.classList.add("edit-btn");
