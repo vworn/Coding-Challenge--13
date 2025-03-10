@@ -30,4 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
         // Create remove button
         const removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
-        removeBtn.classList.add("remove-btn");
+                removeBtn.classList.add("remove-btn");
+        
+                // Append elements to card
+                card.appendChild(empName);
+                card.appendChild(empPosition);
+                card.appendChild(removeBtn);
+        
+                // Append card to employee container
+                employeeContainer.appendChild(card);
+        
+                // Clear input fields
+                nameInput.value = "";
+                positionInput.value = "";
+            }
+        });
