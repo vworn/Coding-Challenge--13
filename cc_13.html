@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management Dashboard</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Styling for header and footer */
+        header, footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        /* Input fields and button styling */
+        #controls {
+            margin: 20px 0;
+        }
+
+        /* Employee card container */
+        #employeeContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Employee card styles */
+        .employee-card {
+            background: lightgray;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Button styling */
+        button {
+            margin: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        /* Remove button */
+        .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+        }
+
+        /* Edit button */
+        .edit-btn {
+            background: orange;
+            color: white;
+            border: none;
+        }
+
+        /* Save button */
+        .save-btn {
+            background: green;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Employee Management System</h1>
+    </header>
+
+    <main>
+        <section id="controls">
+            <input type="text" id="employeeName" placeholder="Employee Name">
+            <input type="text" id="employeePosition" placeholder="Position">
+            <button id="addEmployee">Add Employee</button>
+        </section>
+
+        <div id="employeeContainer"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Employee Management Dashboard</p>
+    </footer>
+
+    <script src="cc_13.js"></script>
+</body>
+</html>
