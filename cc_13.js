@@ -112,3 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Employee card clicked!");
         }
     });
+
+    // Task 3: Converting NodeLists to Arrays for Bulk Updates
+    function bulkUpdate() {
+        const cards = Array.from(document.querySelectorAll(".employee-card"));
+        cards.forEach(card => {
+            card.style.backgroundColor = "lightblue";
+        });
+    }
+
+    // Example usage: Call bulkUpdate() from the console to update all employee cards
